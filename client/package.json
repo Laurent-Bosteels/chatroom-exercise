@@ -1,0 +1,13 @@
+{
+  "name": "chatroom-exercise",
+  "version": "1.0.0",
+  "description": "learning challenge on web sockets",
+  "scripts": {
+    "build-css": "tailwindcss build src/styles.css -o public/styles.css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7"
+  }
+}

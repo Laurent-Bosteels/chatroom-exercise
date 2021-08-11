@@ -5,14 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./public/styles.css">
 
 </head>
 <body>
     <div id="target">
-        <input type="text" id="message">
-        <button id="sendToMe">Send to me</button>
-        <button id="sendToAll">Send to all</button>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nickname" type="text" placeholder="Nickname">
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" type="text" placeholder="Message">
+
+
+        <button class="sendToMe bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Send to me
+        </button>
+
+        <button class="sendToAll bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Send to all
+        </button>
+
     </div>
     <div id="output">
 

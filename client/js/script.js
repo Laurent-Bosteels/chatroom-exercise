@@ -2,21 +2,33 @@
 let socket = io.connect();
 
 // Query DOM
-let btnMe = document.getElementById("sendToMe");
-    btnAll = document.getElementById("sendToAll");
+let btnMe = document.querySelector(".sendToMe");
+    btnAll = document.querySelector(".sendToAll");
+    nickname = document.getElementById("nickname");
     message = document.getElementById("message");
     output = document.getElementById("output");
-    feedback = document.getElementById('feedback');
+    feedback = document.getElementById("feedback");
 
 // Emit events
-btnAll.addEventListener('click', function(){
-    socket.emit('chat', {
-        message: message.value,
-    });
-    message.value = "";
+btnAll.addEventListener("click", function () {
+  socket.emit("public", {
+    nickname: nickname.value,
+    message: message.value
   });
+  nickname.value = "";
+  message.value = "";
+});
 
-// Listen for events
-socket.on('chat', function(data) {
-    output.innerHTML += '<br>'+data.message;
+btnMe.addEventListener("click", function () {
+  socket.emit("private", {
+    nickname: nickname.value,
+    message: message.value
+  });
+  nickname.value = "";
+  message.value = "";
+});
+
+// Listen for events 
+socket.on("displayMessage", function (data) {
+  output.innerHTML += "<p><b>" + data.nickname + "</b></p>" + data.message;
 });

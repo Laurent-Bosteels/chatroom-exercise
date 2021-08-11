@@ -16,14 +16,22 @@ const port = 3000;
 const io = require("socket.io")(server);
 
 let counter = 0;
+
 io.on("connection", function (socket) {
   counter++;
   console.log(counter + " someone connected");
   // Handle chat event
-  socket.on("chat", function (data) {
+  
+  socket.on("public", function (data) {
     // console.log(data);
-    io.emit("chat", data);
+    io.emit("displayMessage", data);
   });
+
+  socket.on("private", function (data) {
+    // console.log(data);
+    socket.emit("displayMessage", data);
+  });
+
 });
 
 server.listen(port, () => {
