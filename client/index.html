@@ -8,24 +8,38 @@
     <link rel="stylesheet" href="./public/styles.css">
 
 </head>
-<body>
-    <div id="target">
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nickname" type="text" placeholder="Nickname">
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" type="text" placeholder="Message">
+<body class="bg-blue-400 min-h-screen flex items-center justify-center">
+
+    <div class="grid grid-cols-3 gap-2">
+
+        <div class="bg-white p-3 rounded">
+            Rooms
+        </div>
+
+        <div class="bg-white p-3 rounded">
+
+            <div id="output"></div>
+
+            <div id="target">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nickname" type="text" placeholder="Nickname">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" type="text" placeholder="Message">
+                <button class="sendToMe bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    Send to me
+                </button>
+                <button class="sendToAll bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    Send to all
+                </button>
+            </div>
 
 
-        <button class="sendToMe bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Send to me
-        </button>
-
-        <button class="sendToAll bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Send to all
-        </button>
+        </div>
+        <div class="bg-white p-3 rounded">
+            Active members
+        </div>
 
     </div>
-    <div id="output">
 
-    </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/script.js"></script>
 </body>
