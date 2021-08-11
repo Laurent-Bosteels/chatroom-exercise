@@ -13,15 +13,19 @@ const server = http.createServer(app);
 const port = 3000;
 
 // The io variable is now the entry point of all the sockets connected to the server
-const io = require('socket.io')(server)
+const io = require("socket.io")(server);
 
 let counter = 0;
-io.on('connection', (socket) => {
+io.on("connection", function (socket) {
   counter++;
-  console.log(counter+' someone connected');
+  console.log(counter + " someone connected");
+  // Handle chat event
+  socket.on("chat", function (data) {
+    // console.log(data);
+    io.emit("chat", data);
+  });
 });
 
-server.listen(port, ()=>{
-  console.log("server running on "+port);
-
-})
+server.listen(port, () => {
+  console.log("server running on " + port);
+});
