@@ -3,36 +3,35 @@ let socket = io.connect();
 
 // Query DOM
 let btnMe = document.querySelector(".sendToMe");
-    btnAll = document.querySelector(".sendToAll");
-    nickname = document.getElementById("nickname");
-    message = document.getElementById("message");
-    output = document.getElementById("output");
-    feedback = document.getElementById("feedback");
+btnAll = document.querySelector(".sendToAll");
+nickname = document.getElementById("nickname");
+message = document.getElementById("message");
+output = document.getElementById("output");
+feedback = document.getElementById("feedback");
 
 // Emit events
 btnAll.addEventListener("click", function () {
-  socket.emit("public", {
-    nickname: nickname.value,
-    message: message.value
-  });
-  nickname.value = "";
-  message.value = "";
+  message = document.getElementById("message").value;
+  socket.emit("sendToAll", message);
 });
 
 btnMe.addEventListener("click", function () {
-  socket.emit("private", {
-    nickname: nickname.value,
-    message: message.value
-  });
-  nickname.value = "";
-  message.value = "";
+  message = document.getElementById("message").value;
+  socket.emit("sendToMe", message);
 });
 
-// Listen for events 
-socket.on("displayMessage", function (data) {
-  output.innerHTML += "<p><b>" + data.nickname + "</b></p>" + data.message;
-});
+// Listen for events and output it to the DOM
 
-socket.on("generalMessage", function (data) {
-    output.innerHTML += "<p><b>" + data.nickname + "</b></p>" + data.message;
+// Listen for events and output to the DOM 
+socket.on("displayMessage", (message) => {
+    div = document.createElement("div");
+    div.classList.add("message");
+    div.innerHTML += `<p>${message}</p>`;
+    output.appendChild(div);
   });
+
+/* socket.on("displayMessage", (message) => {
+  output = document.getElementById("output");
+  output.innerText += message;
+  output.innerHTML += "<br>";
+}); */

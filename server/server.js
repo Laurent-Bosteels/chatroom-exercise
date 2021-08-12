@@ -20,27 +20,28 @@ let counter = 0;
 io.on("connection", function (socket) {
   counter++;
   console.log(counter + " someone connected");
-  // Handle chat event
-  
-  socket.on("public", function (data) {
-    // console.log(data);
-    io.emit("displayMessage", data);
-  });
 
-  socket.on("private", function (data) {
-    // console.log(data);
-    socket.emit("displayMessage", data);
-  });
+  // Handle chat events
+
+  // Welcome message for a user
+  socket.emit("displayMessage", "Welcome to the chat!");
 
   // Socket.IO makes it easy to send events to all the connected clients.
   // Please note that broadcasting is a server-only feature.
-  socket.broadcast.emit('displayMessage', 'A user has joined the chat');
+  socket.broadcast.emit("displayMessage", "A user has joined the chat");
 
   // Handling disconnect event
-  socket.on('disconnect', function() {
-    console.log('Got disconnect!');
+  socket.on("disconnect", function () {
+    io.emit('displayMessage', 'A user has left the chat');
   });
 
+  socket.on("sendToAll", (message) => {
+    io.emit("displayMessage", message);
+  });
+
+  socket.on("sendToMe", (message) => {
+    socket.emit("displayMessage", message);
+  });
 });
 
 server.listen(port, () => {
