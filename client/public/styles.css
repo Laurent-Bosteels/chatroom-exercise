@@ -32232,6 +32232,15 @@ video {
   content: none;
 }
 
+* {
+  font-family: "Lucida Console", monospace;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
 .chat-main {
   padding: 30px;
 }
@@ -32251,7 +32260,6 @@ video {
 
 .output {
   height: 600px;
-  padding: 30px;
   overflow-y: scroll;
 }
 
@@ -188389,5 +188397,3 @@ video {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
-
-

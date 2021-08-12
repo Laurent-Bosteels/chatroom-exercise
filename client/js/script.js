@@ -24,6 +24,19 @@ btnMe.addEventListener("click", function () {
   socket.emit("sendToMe", message);
 });
 
+// We want to get the username and roomname
+// I used QS, a querystring parser that supports nesting and arrays, with a depth limit
+
+const { username, room} = Qs.parse(location.search, {
+
+    // To bypass the leading question mark
+    ignoreQueryPrefix: true
+
+});
+
+console.log(username, room)
+
+
 // Message from server
 // Listen for events
 socket.on('displayMessage', (message) => {
