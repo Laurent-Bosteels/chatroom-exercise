@@ -32,6 +32,15 @@ io.on("connection", function (socket) {
     socket.emit("displayMessage", data);
   });
 
+  // Socket.IO makes it easy to send events to all the connected clients.
+  // Please note that broadcasting is a server-only feature.
+  socket.broadcast.emit('displayMessage', 'A user has joined the chat');
+
+  // Handling disconnect event
+  socket.on('disconnect', function() {
+    console.log('Got disconnect!');
+  });
+
 });
 
 server.listen(port, () => {

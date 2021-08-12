@@ -32,3 +32,7 @@ btnMe.addEventListener("click", function () {
 socket.on("displayMessage", function (data) {
   output.innerHTML += "<p><b>" + data.nickname + "</b></p>" + data.message;
 });
+
+socket.on("generalMessage", function (data) {
+    output.innerHTML += "<p><b>" + data.nickname + "</b></p>" + data.message;
+  });
