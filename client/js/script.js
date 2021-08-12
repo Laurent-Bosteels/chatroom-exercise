@@ -9,6 +9,12 @@ message = document.getElementById("message");
 output = document.getElementById("output");
 feedback = document.getElementById("feedback");
 
+// Timestamp
+var d = new Date();
+var timestamp = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
+d.getHours() + ":" + d.getMinutes();
+
+
 // Emit events
 btnAll.addEventListener("click", function () {
   message = document.getElementById("message").value;
@@ -26,7 +32,10 @@ btnMe.addEventListener("click", function () {
 socket.on("displayMessage", (message) => {
     div = document.createElement("div");
     div.classList.add("message");
-    div.innerHTML += `<p>${message}</p>`;
+    div.innerHTML += `
+    <p class=timestamp>${timestamp}</p>
+    <p>${message}</p>
+    `;
     output.appendChild(div);
   });
 
