@@ -1,3 +1,5 @@
+const { message } = require("statuses");
+
 // Make connection
 let socket = io.connect();
 
@@ -5,31 +7,41 @@ let socket = io.connect();
 let btnMe = document.querySelector(".sendToMe");
 btnAll = document.querySelector(".sendToAll");
 nickname = document.getElementById("nickname");
-message = document.getElementById("message");
-output = document.getElementById("output");
-feedback = document.getElementById("feedback");
+input = document.getElementById("input");
+output = document.querySelector(".output");
 
 // Timestamp
 var d = new Date();
 var timestamp = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
 d.getHours() + ":" + d.getMinutes();
 
-
 // Emit events
 btnAll.addEventListener("click", function () {
-  message = document.getElementById("message").value;
+  message = document.getElementById("input").value;
   socket.emit("sendToAll", message);
+  
 });
 
 btnMe.addEventListener("click", function () {
-  message = document.getElementById("message").value;
+  message = document.getElementById("input").value;
   socket.emit("sendToMe", message);
+
+  // clear input
+  message.value = '';
+
 });
 
-// Listen for events and output it to the DOM
+// Message from server
+// Listen for events
+socket.on('displayMessage', (message) => {
+    console.log(message);
+    outputMessage(message);
 
-// Listen for events and output to the DOM 
-socket.on("displayMessage", (message) => {
+    output.scrollTop = output.scrollHeight;
+});
+
+// And output it to the DOM 
+function outputMessage(message) {
     div = document.createElement("div");
     div.classList.add("message");
     div.innerHTML += `
@@ -37,7 +49,7 @@ socket.on("displayMessage", (message) => {
     <p>${message}</p>
     `;
     output.appendChild(div);
-  });
+  };
 
 /* socket.on("displayMessage", (message) => {
   output = document.getElementById("output");

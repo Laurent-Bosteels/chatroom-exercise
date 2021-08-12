@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.chat-main {
+  padding: 30px;
+}
+
 .timestamp {
   font-size: 12px;
 }
@@ -10,3 +14,15 @@
   padding: 5px;
   border-bottom: 1px solid lightgray;
 }
+
+.btn-group {
+  padding-top: 15px;
+}
+
+.output {
+    height: 600px;
+    padding: 30px;
+    overflow-y: scroll;
+}
+
+

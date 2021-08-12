@@ -32232,6 +32232,10 @@ video {
   content: none;
 }
 
+.chat-main {
+  padding: 30px;
+}
+
 .timestamp {
   font-size: 12px;
 }
@@ -32239,6 +32243,16 @@ video {
 .message {
   padding: 5px;
   border-bottom: 1px solid lightgray;
+}
+
+.btn-group {
+  padding-top: 15px;
+}
+
+.output {
+  height: 600px;
+  padding: 30px;
+  overflow-y: scroll;
 }
 
 @media (min-width: 640px) {
@@ -188375,3 +188389,5 @@ video {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
+
+
