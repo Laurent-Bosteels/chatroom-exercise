@@ -29,7 +29,6 @@ btnMe.addEventListener("click", function () {
 socket.on('displayMessage', (message) => {
     console.log(message);
     outputMessage(message);
-
     output.scrollTop = output.scrollHeight;
 });
 
@@ -38,8 +37,9 @@ function outputMessage(message) {
     div = document.createElement("div");
     div.classList.add("message");
     div.innerHTML += `
-    <p class=timestamp>${timestamp}</p>
-    <p>${message}</p>
+    <p>${message.username}</p>
+    <p class=timestamp>${message.time}</p>
+    <p>${message.text}</p>
     `;
     output.appendChild(div);
   };

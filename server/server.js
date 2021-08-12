@@ -14,6 +14,9 @@ const port = 3000;
 
 // The io variable is now the entry point of all the sockets connected to the server
 const io = require("socket.io")(server);
+const format = require('../client/js/format');
+
+const botName = "Bot";
 
 let counter = 0;
 
@@ -24,23 +27,23 @@ io.on("connection", function (socket) {
   // Handle chat events
 
   // Welcome message for a user
-  socket.emit("displayMessage", "Welcome to the chat!");
+  socket.emit("displayMessage", format(botName, "Welcome to the chat!"));
 
   // Socket.IO makes it easy to send events to all the connected clients.
   // Please note that broadcasting is a server-only feature.
-  socket.broadcast.emit("displayMessage", "A user has joined the chat");
+  socket.broadcast.emit("displayMessage", format(botName, "A user has joined the chat"));
 
   // Handling disconnect event
   socket.on("disconnect", function () {
-    io.emit('displayMessage', 'A user has left the chat');
+    io.emit('displayMessage', format(botName,'A user has left the chat'));
   });
 
   socket.on("sendToAll", (message) => {
-    io.emit("displayMessage", message);
+    io.emit("displayMessage", format('User',message));
   });
 
   socket.on("sendToMe", (message) => {
-    socket.emit("displayMessage", message);
+    socket.emit("displayMessage", format('User',message));
   });
 });
 
