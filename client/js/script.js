@@ -1,5 +1,3 @@
-const { message } = require("statuses");
-
 // Make connection
 let socket = io.connect();
 
@@ -19,16 +17,11 @@ d.getHours() + ":" + d.getMinutes();
 btnAll.addEventListener("click", function () {
   message = document.getElementById("input").value;
   socket.emit("sendToAll", message);
-  
 });
 
 btnMe.addEventListener("click", function () {
   message = document.getElementById("input").value;
   socket.emit("sendToMe", message);
-
-  // clear input
-  message.value = '';
-
 });
 
 // Message from server
