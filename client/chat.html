@@ -1,81 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./public/styles.css" />
-  </head>
-  <body class="bg-blue-400 min-h-screen flex items-center justify-center">
-    <main class="chat-main grid grid-cols-3 gap-3">
-      <div class="chat-sidebar bg-white p-3 rounded">
-        <h3><i class="fa fa-inbox"></i> Room Name:</h3>
-        <h2 id="room-name">Javacript</h2>
-      </div>
+    <link rel="stylesheet" href="./public/styles.css">
+
+</head>
+<body class="bg-blue-400 min-h-screen flex items-center justify-center">
+
+    <main class="chat-main grid grid-cols-3 gap-3 w-full">
+        <div class="chat-sidebar bg-white p-3 rounded w-3/12">
+          <h3><i class="fa fa-inbox"></i> Room Name:</h3>
+          <h2 id="room-name">Javacript</h2>
+        </div>
       <div class="chat-form-container bg-white p-3 rounded">
         <div class="output"></div>
         <div id="target">
-          <input
-            class="
-              shadow
-              appearance-none
-              border
-              rounded
-              w-full
-              py-2
-              px-3
-              text-gray-700
-              leading-tight
-              focus:outline-none focus:shadow-outline
-            "
-            id="input"
-            type="text"
-            placeholder="Enter Message"
-          />
-          <div class="btn-group">
-            <button
-              class="
-                sendToMe
-                bg-blue-500
-                hover:bg-blue-700
-                text-white
-                font-bold
-                py-2
-                px-4
-                rounded-full
-              "
-            >
-              Send to me
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="input" type="text" placeholder="Enter Message">
+            <div class="btn-group">
+            <button class="sendToMe bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                Send to me
             </button>
-            <button
-              class="
-                sendToAll
-                bg-blue-500
-                hover:bg-blue-700
-                text-white
-                font-bold
-                py-2
-                px-4
-                rounded-full
-              "
-            >
-              Send to all
+            <button class="sendToAll bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                Send to all
             </button>
-          </div>
         </div>
-      </div>
-      <div class="chat-dm-container bg-white p-3 rounded">
+        </div>
+    </div>
+    <div class="chat-dm-container bg-white p-3 rounded w-3/12">
         <div class="chat-users">
-          <h3><i class="fa fa-user-circle"></i> Users</h3>
-          <ul id="users"></ul>
+            <h3><i class="fa fa-user-circle"></i> Users</h3>
+            <ul id="users"></ul>
         </div>
-      </div>
-    </main>
+    </div>
+</main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/script.js"></script>
     <script src="https://use.fontawesome.com/05ea331e85.js"></script>
-  </body>
+</body>
 </html>
